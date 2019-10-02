@@ -3,6 +3,12 @@
 #Email = Not empty & Must contain @
 #Password = Not empty & at least 8 characters
 
+#Use this instead, also change to post
+#$email = filter_input(INPUT_GET,'email')
+#$password = filter_input(INPUT_GET,'password')
+
+
+
 if(isset($_GET["email"]) && !empty($_GET["email"])){
     if(strpos(($_GET["email"]),'@')){
         $email = $_GET["email"];
@@ -30,12 +36,5 @@ if(isset($_GET["password"]) && !empty($_GET["password"])){
         echo nl2br("Password Required");
         echo "<br><br>";
 }
-
-
-
-#echo "Email is: " . $email;
-#echo "<br><br>";
-#echo "Password is: " . $password;
-
 
 ?>
