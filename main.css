@@ -1,0 +1,21 @@
+body {background-color: #c6e5ff;}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: left;
+}
+input, textarea {
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 70px 0;
+
+}
