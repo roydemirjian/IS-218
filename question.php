@@ -1,8 +1,8 @@
 <?php
 
-$questionName = filter_input(INPUT_GET,'questionName');
-$questionBody = filter_input(INPUT_GET,'questionBody');
-$questionSkills = filter_input(INPUT_GET,'questionSkills');
+$questionName = filter_input(INPUT_POST,'questionName');
+$questionBody = filter_input(INPUT_POST,'questionBody');
+$questionSkills = filter_input(INPUT_POST,'questionSkills');
 
 #questionName
 if(!empty($questionName)){
@@ -10,7 +10,7 @@ if(!empty($questionName)){
         echo "Question Name is: " . $questionName;
         echo "<br><br>";
     }else{
-        echo "Must be more than 3 characters";
+        echo "Question Name must be more than 3 characters";
         echo "<br><br>";
     }
 }else{
@@ -41,8 +41,7 @@ if(!empty($questionSkills)){
             echo $val;
             echo " | ";
         }
-        #echo "Question Skills are: " . $questionArray;
-        #echo "<br><br>";
+
     }else{
         echo "More Skills required";
         echo "<br><br>";

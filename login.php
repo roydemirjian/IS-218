@@ -1,8 +1,8 @@
 <?php
 
 #Change to post
-$email = filter_input(INPUT_GET,'email');
-$password = filter_input(INPUT_GET,'password');
+$email = filter_input(INPUT_POST,'email');
+$password = filter_input(INPUT_POST,'password');
 
 
 #Email

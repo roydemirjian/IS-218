@@ -1,10 +1,10 @@
 <?php
 
-$firstName = filter_input(INPUT_GET,'firstName');
-$lastName = filter_input(INPUT_GET,'lastName');
-$birthday = filter_input(INPUT_GET,'birthday');
-$email = filter_input(INPUT_GET,'email');
-$password = filter_input(INPUT_GET,'password');
+$firstName = filter_input(INPUT_POST,'firstName');
+$lastName = filter_input(INPUT_POST,'lastName');
+$birthday = filter_input(INPUT_POST,'birthday');
+$email = filter_input(INPUT_POST,'email');
+$password = filter_input(INPUT_POST,'password');
 
 
 #First Name
@@ -54,7 +54,7 @@ if(isset($password) && !empty($password)){
         echo "Password is: " . $password;
         echo "<br><br>";
     }else{
-        echo nl2br("Password length must be 8 characters");
+        echo nl2br("Password length must be at least 8 characters");
         echo "<br><br>";
     }
 }else{
