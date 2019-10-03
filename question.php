@@ -20,7 +20,7 @@ if(!empty($questionName)){
 
 #questionBody
 if(!empty($questionBody)){
-    if(strlen($questionBody < 500)){
+    if(strlen($questionBody)<500){
         echo "Question Body is: " . $questionBody;
         echo "<br><br>";
     }else{
