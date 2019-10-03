@@ -50,7 +50,7 @@ if(isset($email) && !empty($email)){
 
 #Password
 if(isset($password) && !empty($password)){
-    if(strlen($password)>7){;
+    if(strlen($password)>7){
         echo "Password is: " . $password;
         echo "<br><br>";
     }else{
