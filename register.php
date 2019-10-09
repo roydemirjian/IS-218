@@ -62,5 +62,31 @@ if(isset($password) && !empty($password)){
     echo "<br><br>";
 }
 
+#Register user if it does not exist
+$servername = "sql1.njit.edu";
+$db_username = "rrd28";
+$db_password = "donate52";
+$dsn = "mysql:host=$servername;dbname=$db_username";
+
+#Check if credentials are in db
+try {
+    $db = new PDO($dsn, $db_username, $db_password);
+    $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
+    $q = $db->prepare($sql);
+    $q->execute();
+    $results = $q->fetchAll();
+    if($q->rowCount() > 0){
+        echo "Account is already made";
+    }else{
+        $sql2 = "INSERT INTO accounts (email, firstname, lastname, birthday, password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
+        $q = $db->prepare($sql2);
+        $q->execute();
+        echo 'Account Made!';
+    }
+    $q->closeCursor();
+
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 
 ?>
