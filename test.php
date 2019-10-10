@@ -1,5 +1,21 @@
 <?php
 
+#Display all questions by user
+#Display username and lastname
+
+session_start();
+
+#Check is session is set
+if (!isset($_SESSION['logged']) || !$_SESSION['logged']){
+    header("Location:login.php");
+}
+
+#Get session data
+
+$sesh_email = $_SESSION['email'];
+$sesh_password = $_SESSION['password'];
+
+
 $servername = "sql1.njit.edu";
 $username = "rrd28";
 $password = "donate52";
@@ -10,14 +26,16 @@ $dsn = "mysql:host=$servername;dbname=$username";
 try {
     $db = new PDO($dsn, $username, $password);
     echo "Connected successfully<br>";
-    $sql = 'SELECT * FROM accounts';
+    echo "<br><br>";
+    echo "All Questions posted by: FirstName LastName";
+    $sql = "SELECT * FROM questions WHERE email = '$sesh_email'";
     $q = $db->prepare($sql);
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
-        echo "<table border=\"1\"><tr><th>ID</th><th>Email</th><th>First Name</th><th>Last Name</th><th>Birthday</th><th>Password</th></tr>";
+        echo "<table border=\"1\"><tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th></tr>";
         foreach ($results as $result) {
-            echo "<tr><td>" . $result["id"] . "</td><td>" . $result["email"] . "</td><td>" . $result["firstname"] . "</td><td>" . $result["lastname"] . "</td><td>" .$result["birthday"] . "</td><td>" . $result["password"]."</td></tr>";
+            echo "<tr><td>" . $result["id"] . "</td><td>" . $result["email"] . "</td><td>" . $result["title"] . "</td><td>" . $result["body"] . "</td><td>" .$result["skills"] . "</td></tr>";
         }
     }else{
         echo '0 results';
@@ -28,7 +46,6 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-
-
+session_destroy();
 
 ?>

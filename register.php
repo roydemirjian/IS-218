@@ -1,5 +1,13 @@
 <?php
 
+/*
+session_start();
+#Check is session is set
+if (!isset($_SESSION['logged']) || !$_SESSION['logged']){
+    header("Location:login.php");
+}
+*/
+
 $firstName = filter_input(INPUT_POST,'firstName');
 $lastName = filter_input(INPUT_POST,'lastName');
 $birthday = filter_input(INPUT_POST,'birthday');
@@ -77,16 +85,21 @@ try {
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
         echo "Account is already made";
+        #header("Refresh:2; url=login.php");
+
     }else{
         $sql2 = "INSERT INTO accounts (email, firstname, lastname, birthday, password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
         $q = $db->prepare($sql2);
         $q->execute();
-        echo 'Account Made!';
+        echo 'Account Made! Redirecting to Login Page!';
+        #header("Refresh:2; url=login.php");
     }
     $q->closeCursor();
 
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+
+session_destroy();
 
 ?>

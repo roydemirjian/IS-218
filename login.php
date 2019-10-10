@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 #Change to post
 $email = filter_input(INPUT_POST,'email');
 $password = filter_input(INPUT_POST,'password');
@@ -47,9 +49,16 @@ try {
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
-        echo "Login Success";
+        echo "Login Success. Redirecting to homepage...";
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
+        $_SESSION['logged'] = true;
+        header("Refresh:2; url=test.php");
+        exit;
     }else{
         echo 'Login Failure. Please register!';
+        #header("Refresh:2; url=register.php");
+        #Redirect to registration
     }
     $q->closeCursor();
 
