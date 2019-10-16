@@ -46,6 +46,8 @@ try {
     $db = new PDO($dsn, $db_username, $db_password);
     $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
     $q = $db->prepare($sql);
+    $q->bindValue('email',$email);
+    $q->bindValue('password',$password);
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){

@@ -81,6 +81,8 @@ try {
     $db = new PDO($dsn, $db_username, $db_password);
     $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
     $q = $db->prepare($sql);
+    $q->bindValue('email',$email);
+    $q->bindValue('password',$password);
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
@@ -90,6 +92,11 @@ try {
     }else{
         $sql2 = "INSERT INTO accounts (email, firstname, lastname, birthday, password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
         $q = $db->prepare($sql2);
+        $q->bindValue('email',$email);
+        $q->bindValue('firstname',$firstName);
+        $q->bindValue('lastname',$lastName);
+        $q->bindValue('birthday',$birthday);
+        $q->bindValue('password',$password);
         $q->execute();
         echo 'Account Made! Redirecting to Login Page!';
         #header("Refresh:2; url=login.php");

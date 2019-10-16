@@ -75,6 +75,10 @@ try {
     $db = new PDO($dsn, $db_username, $db_password);
     $sql2 = "INSERT INTO questions (email, title, body, skills) VALUES ('$email','$questionName','$questionBody','$questionSkills')";
     $q = $db->prepare($sql2);
+    $q->bindValue('email',$email);
+    $q->bindValue('title',$questionName);
+    $q->bindValue('body',$questionBody);
+    $q->bindValue('skills',$questionSkills);
     $q->execute();
     echo 'Question Posted';
     $q->closeCursor();
