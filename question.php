@@ -1,12 +1,16 @@
 <?php
 
-/*
 session_start();
-#Check is session is set
+
+#Check is session is set, if not redirect
 if (!isset($_SESSION['logged']) || !$_SESSION['logged']){
-    header("Location:login.php");
+    header("Location:login.html");
 }
-*/
+
+#Get session data from login
+$sesh_email = $_SESSION['email'];
+$sesh_password = $_SESSION['password'];
+
 
 $questionName = filter_input(INPUT_POST,'questionName');
 $questionBody = filter_input(INPUT_POST,'questionBody');
@@ -60,10 +64,9 @@ if(!empty($questionSkills)){
     echo "<br><br>";
 }
 
-#Temporary hard coded vars
-$email = 'rrd28@njit.edu';
+$email = $sesh_email;
 
-#
+#Database Info
 $servername = "sql1.njit.edu";
 $db_username = "rrd28";
 $db_password = "donate52";
@@ -81,11 +84,14 @@ try {
     $q->bindValue('skills',$questionSkills);
     $q->execute();
     echo 'Question Posted';
+    echo '<br><br>';
     $q->closeCursor();
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+echo 'Redirecting to home';
+header("refresh:3; url=test.php");
 
-session_destroy();
+#session_destroy();
 
 ?>
