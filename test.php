@@ -1,35 +1,61 @@
 <?php
 
+#First Page after login, basically a home page
 #Display all questions by user
 #Display username and lastname
 
 session_start();
 
-#Check is session is set
+#Check is session is set, if not redirect
 if (!isset($_SESSION['logged']) || !$_SESSION['logged']){
     header("Location:login.php");
 }
 
-#Get session data
-
+#Get session data from login
 $sesh_email = $_SESSION['email'];
 $sesh_password = $_SESSION['password'];
 
-
+#Database Info
 $servername = "sql1.njit.edu";
 $username = "rrd28";
 $password = "donate52";
-
 $dsn = "mysql:host=$servername;dbname=$username";
 
-#Get all rows and echo them
+#Get users first name and last name based on their session information
 try {
     $db = new PDO($dsn, $username, $password);
     echo "Connected successfully<br>";
     echo "<br><br>";
-    echo "All Questions posted by: FirstName LastName";
+    $sql2 = "SELECT * FROM accounts WHERE email = '$sesh_email' AND password = '$sesh_password'";
+    $q = $db->prepare($sql2);
+    $q->bindValue('email',$sesh_email);
+    $q->bindValue('password',$sesh_password);
+    $q->execute();
+    $results = $q->fetchAll();
+    if($q->rowCount() > 0){
+        foreach ($results as $result) {
+            $firstName = $result["firstname"];
+            $lastName = $result["lastname"];
+        }
+    }else{
+        echo '0 results: Getting first and last name based on session info';
+    }
+    $q->closeCursor();
+
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+
+#Get all rows from questions posted by user and echo them
+try {
+    $db = new PDO($dsn, $username, $password);
+    echo "Connected successfully<br>";
+    echo "<br><br>";
+    echo "All Questions posted by: " . $firstName . " " . $lastName;
     $sql = "SELECT * FROM questions WHERE email = '$sesh_email'";
     $q = $db->prepare($sql);
+    $q->bindValue('email',$sesh_email);
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
@@ -38,7 +64,7 @@ try {
             echo "<tr><td>" . $result["id"] . "</td><td>" . $result["email"] . "</td><td>" . $result["title"] . "</td><td>" . $result["body"] . "</td><td>" .$result["skills"] . "</td></tr>";
         }
     }else{
-        echo '0 results';
+        echo '0 results: Getting all rows from questions from the user';
     }
     $q->closeCursor();
 
