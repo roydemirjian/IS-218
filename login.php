@@ -2,7 +2,7 @@
 
 session_start();
 
-#Change to post
+
 $email = filter_input(INPUT_POST,'email');
 $password = filter_input(INPUT_POST,'password');
 
@@ -58,9 +58,8 @@ try {
         header("Refresh:2; url=test.php");
         exit;
     }else{
-        echo 'Login Failure. Please register!';
-        #header("Refresh:2; url=register.php");
-        #Redirect to registration
+        echo 'Login Failure. Please register! Redirecting Now!';
+        header("Refresh:2; url=register.html");
     }
     $q->closeCursor();
 
