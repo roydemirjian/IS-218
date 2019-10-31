@@ -37,7 +37,7 @@ try {
     }else{
         echo '0 results: Getting first and last name based on session info';
     }
-    echo "WELCOME " . $firstName . " " . $lastName;
+    echo '<h1>'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
     $q->closeCursor();
 
 } catch(PDOException $e) {
@@ -49,8 +49,7 @@ try {
 try {
     $db = new PDO($dsn, $username, $password);
     #echo "Connected successfully<br>";
-    echo "<br><br>";
-    echo "All Questions posted by: " . $firstName . " " . $lastName;
+    echo '<h2>'. "All Questions posted by: " . $firstName . " " . $lastName . '</h2>';
     $sql = "SELECT * FROM questions WHERE email = '$sesh_email'";
     $q = $db->prepare($sql);
     $q->bindValue('email',$sesh_email);
@@ -75,12 +74,17 @@ try {
 ?>
 
 <html>
+
+<head>
+    <link rel="stylesheet" href="test.css">
+</head>
+
 <form action="question.html" method="post">
     <input type="submit" value="Submit a new question" />
 </form>
 
 <form action="logout.php">
-    <input type="submit" value="Logout" />
+    <input id = "logout" type="submit" value="Logout" />
 </form>
 
 </html>

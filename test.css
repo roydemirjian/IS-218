@@ -1,0 +1,28 @@
+body {background-color: #c6e5ff;}
+
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    width: 100%;
+}
+th {
+    height: 50px;
+    background-color: navy;
+    color: white;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+    vertical-align: center;
+}
+#logout {
+    margin-right: 100%;
+}
+h1 {
+
+}
+h2 {
+
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
