@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css?v=1.1.4">
 </head>
 
 <!–– First Name & Last Name & Birthday & Email & Password ––>
 
-<main>
+<main class="register">
     <form action="register.php" method="post">
 
-        <label>First Name</label>
-        <input type="text" name="firstName"><br>
+    <label>First Name</label>
+    <input id="register_firstname" type="text" name="firstName"><br>
 
-        <label>Last Name</label>
-        <input type="text" name="lastName"><br>
+    <label>Last Name</label>
+    <input id="register_lastname" type="text" name="lastName"><br>
 
-        <label>Birthday</label>
-        <input type="date" name="birthday"><br>
+    <label>Birthday</label>
+    <input id="register_birthday"type="date" name="birthday"><br>
 
-        <label>Email</label>
-        <input type="text" name="email"><br>
+    <label>Email</label>
+    <input id="register_email"type="text" name="email"><br>
 
-        <label>Password</label>
-        <input type="password" name="password"><br>
+    <label>Password</label>
+    <input id="register_password"type="password" name="password"><br>
 
-        <label>Submit</label>
-        <input type="submit" class="button" value="Register"><br>
+    <label>Submit</label>
+    <input id="register_submit"type="submit" class="button" value="Register"><br>
 
     </form>
 
-    <form action="login.html" method="post">
+    <form id="register_login" action="login.html" method="post">
         <input type="submit" value="Back to Login" />
     </form>
 

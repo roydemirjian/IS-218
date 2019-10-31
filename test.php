@@ -37,7 +37,7 @@ try {
     }else{
         echo '0 results: Getting first and last name based on session info';
     }
-    echo '<h1>'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
+    echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
     $q->closeCursor();
 
 } catch(PDOException $e) {
@@ -48,15 +48,14 @@ try {
 #Get all rows from questions posted by user and echo them
 try {
     $db = new PDO($dsn, $username, $password);
-    #echo "Connected successfully<br>";
-    echo '<h2>'. "All Questions posted by: " . $firstName . " " . $lastName . '</h2>';
+    #echo '<h2>'. "All Questions posted by: " . $firstName . " " . $lastName . '</h2>';
     $sql = "SELECT * FROM questions WHERE email = '$sesh_email'";
     $q = $db->prepare($sql);
     $q->bindValue('email',$sesh_email);
     $q->execute();
     $results = $q->fetchAll();
     if($q->rowCount() > 0){
-        echo "<table border=\"1\"><tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th></tr>";
+        echo "<table id=\"questions_table\" border=\"1\"><tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th></tr>";
         foreach ($results as $result) {
             echo "<tr><td>" . $result["id"] . "</td><td>" . $result["email"] . "</td><td>" . $result["title"] . "</td><td>" . $result["body"] . "</td><td>" .$result["skills"] . "</td></tr>";
         }
@@ -76,15 +75,19 @@ try {
 <html>
 
 <head>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="test.css?v=1.1.4">
 </head>
 
-<form action="question.html" method="post">
-    <input type="submit" value="Submit a new question" />
-</form>
+<main class = "test">
+    <form id="test_question" action="question.html" method="post">
+        <input type="submit" value="Submit a new question" />
+    </form>
 
-<form action="logout.php">
-    <input id = "logout" type="submit" value="Logout" />
-</form>
+    <form id="test_logout" action="logout.php">
+        <input id = "logout" type="submit" value="Logout" />
+    </form>
+</main>
+
+
 
 </html>

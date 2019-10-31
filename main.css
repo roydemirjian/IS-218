@@ -1,5 +1,4 @@
 body {background-color: #c6e5ff;}
-
 label{
     display: inline-block;
     float: left;
@@ -7,20 +6,65 @@ label{
     width: 150px;
     text-align: left;
 }
-
 input, textarea {
     display: inline-block;
     float: left;
     box-sizing: border-box;
 }
 
-form {
-    width: 400px;
-    margin: 0 auto;
-    padding: 70px 0;
-
+textarea {
+    width: 250px;
 }
 
-#register {
+input{
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom:5px;
+}
 
+.login {
+    width: 400px;
+    margin: 0 auto;
+    padding: 70px 15px;
+    border: 3px solid #f1f1f1;
+}
+
+.question {
+    width: 400px;
+    margin: 0 auto;
+    padding: 70px 15px;
+    border: 3px solid #f1f1f1;
+    height: 400px;
+}
+
+.register {
+    width: 400px;
+    margin: 0 auto;
+    padding: 70px 15px;
+    border: 3px solid #f1f1f1;
+}
+
+#login_register, login_submit{
+    width: 100px;
+    margin: 0 auto;
+    padding: 70px 0;
+    display: block;
+    height: 100px;
+}
+
+#question_back{
+    width: 100px;
+    margin: 0 auto;
+    padding: 70px 0;
+    display: block;
+    height: 100px;
+}
+
+#register_login{
+    width: 100px;
+    margin: 0 auto;
+    padding: 70px 0;
+    display: block;
+    height: 100px;
 }
