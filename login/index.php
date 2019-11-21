@@ -46,13 +46,15 @@ else if ($action == 'user_login'){
     }
 
     if(login_user($email,$password)){
-        header("Location: ");
+        header("Location: login_success_test.php");
         #Successful login... goto home page?
-    }else{
-        header("Location: ");
+    }
+    /**
+    else{
+        header("Location: index.php");
         #Failure... back to login page?
     }
-
+    **/
 }
 
 ?>
