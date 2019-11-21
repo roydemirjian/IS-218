@@ -46,7 +46,7 @@ else if ($action == 'user_login'){
     }
 
     if(login_user($email,$password)){
-        header("Location: login_success_test.php");
+        header("Location: login_success.php");
         #Successful login... goto home page?
     }
     /**
@@ -56,6 +56,15 @@ else if ($action == 'user_login'){
     }
     **/
 }
+else if($action == 'add_question'){
+    #redirect using include to question form
+
+}
+else if($action == 'user_logout'){
+    #header to logout php
+
+}
+
 
 ?>
 

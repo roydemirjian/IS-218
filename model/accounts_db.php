@@ -1,6 +1,7 @@
 <?php
 
 function login_user($email,$password){
+    session_start();
     global $db;
     try {
         $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
@@ -50,6 +51,34 @@ function register_user($email,$firstName,$lastName,$birthday,$password){
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
+}
+
+function get_user($sesh_email,$sesh_password){
+    session_start();
+    global $db;
+    #Get users first name and last name based on their session information
+    try {
+        $sql2 = "SELECT * FROM accounts WHERE email = '$sesh_email' AND password = '$sesh_password'";
+        $q = $db->prepare($sql2);
+        $q->bindValue('email',$sesh_email);
+        $q->bindValue('password',$sesh_password);
+        $q->execute();
+        $results = $q->fetchAll();
+        if($q->rowCount() > 0){
+            foreach ($results as $result) {
+                $firstName = $result["firstname"];
+                $lastName = $result["lastname"];
+            }
+        }else{
+            echo '0 results: Getting first and last name based on session info';
+        }
+        #echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
+        return array($firstName,$lastName);
+        $q->closeCursor();
+    } catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+
 }
 
 ?>
