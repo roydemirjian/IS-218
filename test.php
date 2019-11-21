@@ -83,7 +83,7 @@ try {
         <input type="submit" value="Submit a new question" />
     </form>
 
-    <form id="test_logout" action="logout.php">
+    <form id="test_logout" action="login/logout.php">
         <input id = "logout" type="submit" value="Logout" />
     </form>
 </main>

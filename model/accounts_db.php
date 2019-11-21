@@ -36,6 +36,7 @@ function register_user($email,$firstName,$lastName,$birthday,$password){
         $q->execute();
         if($q->rowCount() > 0){
             #echo "Account is already made";
+            return false;
         } else{
             $sql2 = "INSERT INTO accounts (email, firstname, lastname, birthday, password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
             $q = $db->prepare($sql2);
@@ -46,6 +47,8 @@ function register_user($email,$firstName,$lastName,$birthday,$password){
             $q->bindValue('password',$password);
             $q->execute();
             #echo 'Account Made! Redirecting to Login Page!';
+            return true;
+            exit;
         }
         $q->closeCursor();
     } catch(PDOException $e) {

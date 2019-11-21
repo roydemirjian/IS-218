@@ -1,4 +1,5 @@
 <?php include '../view/header.php'; ?>
+
 <main class="login" >
     <form  action="index.php" method="post" id="login_form">
         <input type="hidden" name="action" value="user_login"
@@ -11,9 +12,11 @@
 
         <label>Submit</label>
         <input id="login_submit" type="submit" class="button" value="Login"><br>
-
     </form>
 
+    <form id = "login_back" action="../index.php" method="post">
+        <input type="submit" value="Back" />
+    </form>
 
 </main>
 

@@ -27,28 +27,17 @@ get_all_questions($sesh_email);
 
 ?>
 
-<html>
-
-<head>
-    <link rel="stylesheet" href="test.css?v=1.1.4">
-</head>
-
-<main class = "test">
-    <form id="test_question" action="index.php" method="post">
-        <input type="hidden" name="action" value="add_question"
+<main class = "buttons">
+    <form id="question" action="index.php" method="post">
+        <input type="hidden" name="action" value="add_question"/>
         <input type="submit" value="Submit a new question" />
     </form>
 
-    <form id="test_logout" action="index.php">
-        <input type="hidden" name="action" value="user_logout"
-        <input id = "logout" type="submit" value="Logout" />
+    <form id="logout" action="index.php" method="post">
+        <input type="hidden" name="action" value="user_logout"/>
+        <input type="submit" value="Logout" />
     </form>
 </main>
-
-
-
-</html>
-
 
 <?php include 'view/footer.php'; ?>
 

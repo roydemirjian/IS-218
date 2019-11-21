@@ -57,12 +57,17 @@ else if ($action == 'user_login'){
     **/
 }
 else if($action == 'add_question'){
-    #redirect using include to question form
+    header("Location: ../questions");
 
 }
 else if($action == 'user_logout'){
-    #header to logout php
+    header("Location: logout.php");
+}
 
+else if ($action =='delete_question'){
+    $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    delete_question($question_id);
+    header("Location: login_success.php");
 }
 
 

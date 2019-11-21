@@ -74,10 +74,12 @@ else if ($action == 'user_register'){
     }
 
     if(register_user($email,$firstName,$lastName,$birthday,$password)){
-        header("Location: register_success_test.php");
+        header("Location: ../login");
         #Successful registration... goto login page?
     }
 
 }
+
+
 
 ?>
