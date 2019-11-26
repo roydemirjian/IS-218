@@ -35,7 +35,6 @@ else if ($action == 'user_login'){
     #Check if Password is valid
     if(isset($password) && !empty($password)){
         if(strlen($password)>7){
-        #echo "Password is: " . $password;
         }else{
             $error = "Password length must be 8 characters";
             include('../errors/error.php');
@@ -46,7 +45,7 @@ else if ($action == 'user_login'){
     }
 
     if(login_user($email,$password)){
-        header("Location: login_success.php");
+        header("Location: home.php");
         #Successful login... goto home page?
     }
     /**
@@ -67,7 +66,16 @@ else if($action == 'user_logout'){
 else if ($action =='delete_question'){
     $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
     delete_question($question_id);
-    header("Location: login_success.php");
+    header("Location: home.php");
+}
+
+else if ($action == 'edit_question'){
+    $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    #redirect to questions -> questions view
+    #populate questions form using populate_questions
+    #on submit, edit_question
+    #redirect to home.php
+    echo 'test - login index';
 }
 
 

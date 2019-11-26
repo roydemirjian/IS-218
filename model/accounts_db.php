@@ -17,7 +17,6 @@ function login_user($email,$password){
             return true;
             exit;
         } else{
-            #echo 'Login Failure.';
             return false;
         }
         $q->closeCursor();

@@ -25,7 +25,6 @@ else if ($action == 'user_register'){
 
     #First Name
     if(!empty($firstName)){
-        #echo "First Name is: " . $firstName;
     }else{
         $error = "First Name must be filled out";
         include('../errors/error.php');
@@ -33,7 +32,6 @@ else if ($action == 'user_register'){
 
     #Last Name
     if(isset($lastName) && !empty($lastName)){
-        #echo "Last Name is: " . $lastName;
     }else{
         echo nl2br("Last Name must be filled out");
         include('../errors/error.php');
@@ -41,7 +39,6 @@ else if ($action == 'user_register'){
 
     #Birthday
     if(isset($birthday) && !empty($birthday)){
-        #echo "Birthday is: " . $birthday;
     }else{
         $error = "Birthday must be filled out";
         include('../errors/error.php');
@@ -75,11 +72,8 @@ else if ($action == 'user_register'){
 
     if(register_user($email,$firstName,$lastName,$birthday,$password)){
         header("Location: ../login");
-        #Successful registration... goto login page?
     }
 
 }
-
-
 
 ?>

@@ -65,7 +65,7 @@ else if ($action == 'add_question'){
     $email = $sesh_email;
 
     if(create_question($email,$questionName,$questionBody,$questionSkills)){
-        header("Location: ../login/login_success.php");
+        header("Location: ../login/home.php");
         #Successful login... goto home page?
     }
 
@@ -75,6 +75,15 @@ else if ($action == 'add_question'){
     #Failure... back to login page?
     }
      **/
+}
+
+else if ($action == 'edit_question'){
+    $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    #redirect to questions -> questions view (using include?)
+    #populate questions form using populate_questions
+    #on submit, edit_question
+    #redirect to home.php
+    echo 'test -  question index';
 }
 
 
