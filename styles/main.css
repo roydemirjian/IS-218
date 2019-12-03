@@ -6,33 +6,52 @@ label{
     width: 150px;
     text-align: left;
 }
-input, textarea {
+
+textarea {
+    width: 250px;
     display: inline-block;
     float: left;
     box-sizing: border-box;
-}
-textarea {
-    width: 250px;
 }
 input{
     padding: 8px 16px;
     text-align: center;
     font-size: 16px;
     margin-bottom:5px;
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
 }
+
+header > h1 {
+    padding: 25px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 40px;
+}
+
+footer > p {
+    padding: 20px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 20px;
+}
+
 
 .landing {
     width: 400px;
     margin: 0 auto;
-    padding: 70px 15px;
+    padding: 100px 15px;
     border: 3px solid #f1f1f1;
 }
 #landing_register, #landing_submit{
     width: 100px;
     margin: 0 auto;
-    padding: 50px 0;
     display: block;
 }
+
 
 .login {
     width: 400px;
@@ -76,3 +95,7 @@ input{
     display: block;
     height: 100px;
 }
+
+/*
+* === test ===
+*/

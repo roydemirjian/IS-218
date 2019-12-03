@@ -1,4 +1,4 @@
-<?php include 'view/header.php'; ?>
+<?php include '../view/header.php'; ?>
 
 <?php
 require('../model/database.php');
@@ -48,21 +48,21 @@ foreach ($results as $result) {
 }
 
 ?>
-<head>
-    <link rel="stylesheet" href="../styles/table.css?v=1.1.4">
-</head>
 
-<main class = "buttons">
-    <form id="question" action="index.php" method="post">
+<link rel="stylesheet" href="../styles/main.css?v=1.2.2">
+<link rel="stylesheet" href="../styles/table.css?v=1.2.2">
+
+<main class = "home_buttons">
+    <form id="home_question" action="index.php" method="post">
         <input type="hidden" name="action" value="add_question"/>
         <input type="submit" value="Submit a new question" />
     </form>
 
-    <form id="logout" action="index.php" method="post">
+    <form id="home_logout" action="index.php" method="post">
         <input type="hidden" name="action" value="user_logout"/>
         <input type="submit" value="Logout" />
     </form>
 </main>
 
-<?php include 'view/footer.php'; ?>
+<?php include '../view/footer.php'; ?>
 

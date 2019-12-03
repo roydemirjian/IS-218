@@ -1,8 +1,8 @@
 <?php include '../view/header.php'; ?>
 
-<head>
-    <link rel="stylesheet" href="../styles/main.css?v=1.1.5">
-</head>
+
+<link rel="stylesheet" href="../styles/main.css?v=1.1.7">
+
 
 <main class="login" >
     <form  action="index.php" method="post" id="login_form">
