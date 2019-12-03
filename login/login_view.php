@@ -1,8 +1,12 @@
 <?php include '../view/header.php'; ?>
 
+<head>
+    <link rel="stylesheet" href="../styles/main.css?v=1.1.5">
+</head>
+
 <main class="login" >
     <form  action="index.php" method="post" id="login_form">
-        <input type="hidden" name="action" value="user_login"
+        <input type="hidden" name="action" value="user_login">
 
         <label>Email Address</label>
         <input id="login_email"type="text" name="email"><br>

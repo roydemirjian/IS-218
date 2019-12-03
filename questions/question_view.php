@@ -1,8 +1,12 @@
 <?php include '../view/header.php'; ?>
 
+<head>
+    <link rel="stylesheet" href="../styles/main.css?v=1.1.5">
+</head>
+
 <main class="question">
     <form action="index.php" method="post">
-        <input type="hidden" name="action" value="add_question"
+        <input type="hidden" name="action" value="add_question">
 
         <label>Question Name</label>
         <input id="question_name" type="text" name="questionName"><br>
@@ -18,7 +22,7 @@
 
     </form>
 
-    <form id = "question_back" action="index.php" method="post">
+    <form id = "question_back" action="../login/home.php" method="post">
         <input type="submit" value="Back" />
     </form>
 

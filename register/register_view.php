@@ -1,8 +1,12 @@
 <?php include '../view/header.php'; ?>
 
+<head>
+    <link rel="stylesheet" href="../styles/main.css?v=1.1.5">
+</head>
+
 <main class="register">
     <form action="index.php" method="post">
-        <input type="hidden" name="action" value="user_register"
+        <input type="hidden" name="action" value="user_register">
 
         <label>First Name</label>
         <input id="register_firstname" type="text" name="firstName"><br>

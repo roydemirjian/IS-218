@@ -40,14 +40,17 @@ foreach ($results as $result) {
          "<input type=\"submit\" value=\"Delete\" ></td>" .
          "</tr></form>" .
 
-        "<form action=\"index.php\" method=\"post\" >" .
-        "<tr><td><input type=\"hidden\" name=\"action\"value=\"edit_question\" >" .
-        "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
-        "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Edit\" ></td>" .
-        "</tr></form>";
+         "<form action=\"index.php\" method=\"post\" >" .
+         "<tr><td><input type=\"hidden\" name=\"action\"value=\"edit_question\" >" .
+         "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
+         "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Edit\" ></td>" .
+         "</tr></form>";
 }
 
 ?>
+<head>
+    <link rel="stylesheet" href="../styles/table.css?v=1.1.4">
+</head>
 
 <main class = "buttons">
     <form id="question" action="index.php" method="post">

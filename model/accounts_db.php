@@ -17,7 +17,7 @@ function login_user($email,$password){
             return true;
             exit;
         } else{
-            return false;
+             return false;
         }
         $q->closeCursor();
     } catch(PDOException $e) {
