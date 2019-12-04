@@ -26,6 +26,7 @@ function login_user($email,$password){
 }
 
 function register_user($email,$firstName,$lastName,$birthday,$password){
+    session_start();
     global $db;
     try {
         $sql = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";

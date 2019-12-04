@@ -26,10 +26,12 @@ else if ($action == 'user_login'){
         }else{
             $error = "Email must be valid";
             include('../errors/error.php');
+            exit;
         }
     }else{
         $error = "Email Required";
         include('../errors/error.php');
+        exit;
     }
 
     #Check if Password is valid
@@ -38,10 +40,12 @@ else if ($action == 'user_login'){
         }else{
             $error = "Password length must be 8 characters";
             include('../errors/error.php');
+            exit;
         }
     }else{
         $error = "Password Required";
         include('../errors/error.php');
+        exit;
     }
 
     if(login_user($email,$password)){

@@ -28,8 +28,8 @@
 
     </form>
 
-    <form id="register_login" action="../login/" method="post">
-        <input id="register_back_button" type="submit" value="Back to Login" />
+    <form id="register_login" action="../index.php" method="post">
+        <input id="register_back_button" type="submit" value="Back" />
     </form>
 
 </main>

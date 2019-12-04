@@ -28,13 +28,15 @@ else if ($action == 'user_register'){
     }else{
         $error = "First Name must be filled out";
         include('../errors/error.php');
+        exit;
     }
 
     #Last Name
     if(isset($lastName) && !empty($lastName)){
     }else{
-        echo nl2br("Last Name must be filled out");
+        $error="Last Name must be filled out";
         include('../errors/error.php');
+        exit;
     }
 
     #Birthday
@@ -42,37 +44,45 @@ else if ($action == 'user_register'){
     }else{
         $error = "Birthday must be filled out";
         include('../errors/error.php');
+        exit;
     }
 
     #Email
     if(isset($email) && !empty($email)){
         if(strpos(($email),'@')){
-            #echo "Email is: " . $email;
         }else{
             $error = "Email must be valid";
             include('../errors/error.php');
+            exit;
         }
     }else{
         $error = "Email Required";
         include('../errors/error.php');
+        exit;
     }
 
     #Password
     if(isset($password) && !empty($password)){
         if(strlen($password)>7){
-            #echo "Password is: " . $password;
         }else{
             $error = "Password length must be at least 8 characters";
             include('../errors/error.php');
+            exit;
         }
     }else{
         $error = "Password Required";
         include('../errors/error.php');
+        exit;
     }
 
     if(register_user($email,$firstName,$lastName,$birthday,$password)){
-        header("Location: ../login");
+        header("Location: ../index.php");
+    }else{
+        $error = "Email must be unique!";
+        include('../errors/error.php');
+        exit;
     }
+
 
 }
 
