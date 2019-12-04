@@ -23,6 +23,22 @@ $lastName =  $array[1];
 
 echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
 
+?>
+<link rel="stylesheet" href="../styles/table.css?v=1.2.3">
+
+<main class = "home_buttons">
+    <form id="home_question" action="index.php" method="post">
+        <input type="hidden" name="action" value="add_question"/>
+        <input type="submit" value="Submit a new question" />
+    </form>
+
+    <form id="home_logout" action="index.php" method="post">
+        <input type="hidden" name="action" value="user_logout"/>
+        <input type="submit" value="Logout" />
+    </form>
+</main>
+
+<?php
 #Get all questions posted by user
 $results = get_all_questions($sesh_email);
 
@@ -41,28 +57,13 @@ foreach ($results as $result) {
          "</tr></form>" .
 
          "<form action=\"index.php\" method=\"post\" >" .
-         "<tr><td><input type=\"hidden\" name=\"action\"value=\"edit_question\" >" .
+         "<tr><td><input type=\"hidden\" name=\"action\"value=\"populate_question\" >" .
          "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
          "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Edit\" ></td>" .
          "</tr></form>";
 }
-
+echo "</table>";
 ?>
-
-<link rel="stylesheet" href="../styles/main.css?v=1.2.2">
-<link rel="stylesheet" href="../styles/table.css?v=1.2.2">
-
-<main class = "home_buttons">
-    <form id="home_question" action="index.php" method="post">
-        <input type="hidden" name="action" value="add_question"/>
-        <input type="submit" value="Submit a new question" />
-    </form>
-
-    <form id="home_logout" action="index.php" method="post">
-        <input type="hidden" name="action" value="user_logout"/>
-        <input type="submit" value="Logout" />
-    </form>
-</main>
 
 <?php include '../view/footer.php'; ?>
 

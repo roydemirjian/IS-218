@@ -5,7 +5,7 @@
 </head>
 
 <main class="register">
-    <form action="index.php" method="post">
+    <form id="register_form" action="index.php" method="post">
         <input type="hidden" name="action" value="user_register">
 
         <label>First Name</label>
@@ -29,7 +29,7 @@
     </form>
 
     <form id="register_login" action="../login/" method="post">
-        <input type="submit" value="Back to Login" />
+        <input id="register_back_button" type="submit" value="Back to Login" />
     </form>
 
 </main>

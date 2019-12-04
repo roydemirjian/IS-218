@@ -47,26 +47,19 @@ function populate_question($question_id){
 }
 
 
-function edit_question($question_id,$questionName,$questionBody,$questionSkills){
+function edit_question($email,$question_id,$questionName,$questionBody,$questionSkills){
     global $db;
     try {
-        $sql = "SELECT * FROM questions WHERE id = '$question_id'";
-        $q = $db->prepare($sql);
+        $sql2 = "UPDATE questions SET title = '$questionName', body = '$questionBody', skills = '$questionSkills' WHERE id = '$question_id' AND email = '$email'";
+        $q = $db->prepare($sql2);
         $q->bindValue('id',$question_id);
+        $q->bindValue('title',$questionName);
+        $q->bindValue('body',$questionBody);
+        $q->bindValue('skills',$questionSkills);
         $q->execute();
-        $results = $q->fetchAll();
-        if($q->rowCount() > 0){
-            #update new info into question
-            $sql2 = "UPDATE questions SET (title, body, skills) VALUES ($questionName','$questionBody','$questionSkills')";
-            $q = $db->prepare($sql2);
-            $q->bindValue('title',$questionName);
-            $q->bindValue('body',$questionBody);
-            $q->bindValue('skills',$questionSkills);
-            $q->execute();
-        }else{
-            echo '0 results: Could not update question';
-        }
         $q->closeCursor();
+        return true;
+        exit;
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }

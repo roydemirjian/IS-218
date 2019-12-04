@@ -5,7 +5,7 @@
 </head>
 
 <main class="question">
-    <form action="index.php" method="post">
+    <form id = "question_form" action="index.php" method="post">
         <input type="hidden" name="action" value="add_question">
 
         <label>Question Name</label>
@@ -23,7 +23,7 @@
     </form>
 
     <form id = "question_back" action="../login/home.php" method="post">
-        <input type="submit" value="Back" />
+        <input id="question_back_button" type="submit" value="Back" />
     </form>
 
 </main>

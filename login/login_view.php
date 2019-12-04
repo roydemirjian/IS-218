@@ -5,7 +5,7 @@
 
 
 <main class="login" >
-    <form  action="index.php" method="post" id="login_form">
+    <form id="login_form" action="index.php" method="post">
         <input type="hidden" name="action" value="user_login">
 
         <label>Email Address</label>
@@ -19,7 +19,7 @@
     </form>
 
     <form id = "login_back" action="../index.php" method="post">
-        <input type="submit" value="Back" />
+        <input id = "login_back_button" type="submit" value="Back" />
     </form>
 
 </main>
