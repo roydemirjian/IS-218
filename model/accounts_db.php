@@ -35,7 +35,6 @@ function register_user($email,$firstName,$lastName,$birthday,$password){
         $q->bindValue('password',$password);
         $q->execute();
         if($q->rowCount() > 0){
-            #echo "Account is already made";
             return false;
         } else{
             $sql2 = "INSERT INTO accounts (email, firstname, lastname, birthday, password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
@@ -46,7 +45,6 @@ function register_user($email,$firstName,$lastName,$birthday,$password){
             $q->bindValue('birthday',$birthday);
             $q->bindValue('password',$password);
             $q->execute();
-            #echo 'Account Made! Redirecting to Login Page!';
             return true;
             exit;
         }
@@ -73,9 +71,9 @@ function get_user($sesh_email,$sesh_password){
                 $lastName = $result["lastname"];
             }
         }else{
-            echo '0 results: Getting first and last name based on session info';
+            echo 'Could not fetch user data';
+            exit;
         }
-        #echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
         return array($firstName,$lastName);
         $q->closeCursor();
     } catch(PDOException $e) {

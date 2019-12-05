@@ -2,12 +2,12 @@
 
 
 <head>
-    <link rel="stylesheet" href="../styles/main.css?v=1.1.7">
+    <link rel="stylesheet" href="../styles/main.css?v=1.1.8">
 </head>
 
 <main class="question">
 
-    <h1> Question # <?php echo $question_id; ?> </h1>
+    <h1 id = "question_number"> Question # <?php echo $question_id; ?> </h1>
 
     <form action="index.php" method="post">
         <input type="hidden" name="action" value="edit_question">

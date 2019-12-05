@@ -12,7 +12,7 @@ function get_all_questions($sesh_email){
         if($q->rowCount() > 0){
             return $results;
         }else{
-            echo '0 results: Getting all rows from questions from the user';
+            echo 'You have not posted anything yet';
         }
         $q->closeCursor();
 
@@ -37,7 +37,7 @@ function populate_question($question_id){
                 $questionSkills = $result["skills"];
             }
         }else{
-            echo '0 results: ';
+            echo 'Could not obtain question data';
         }
         return array($questionName,$questionBody,$questionSkills);
         $q->closeCursor();
@@ -75,7 +75,6 @@ function create_question($email,$questionName,$questionBody,$questionSkills){
         $q->bindValue('body',$questionBody);
         $q->bindValue('skills',$questionSkills);
         $q->execute();
-        #echo 'Question Posted';
         $q->closeCursor();
         return true;
         exit;
