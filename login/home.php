@@ -17,7 +17,7 @@ $sesh_email = $_SESSION['email'];
 $sesh_password = $_SESSION['password'];
 
 #Get users first and last name
-$array = get_user($sesh_email,$sesh_password);
+$array = AccountDB::get_user($sesh_email,$sesh_password);
 $firstName =  $array[0];
 $lastName =  $array[1];
 
@@ -40,7 +40,7 @@ echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
 
 <?php
 #Get all questions posted by user
-$results = get_all_questions($sesh_email);
+$results = QuestionDB::get_all_questions($sesh_email);
 
 echo "<table id=\"questions_table\" border=\"1\">
       <tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th><th>Delete</th><th>Edit</th></tr>";

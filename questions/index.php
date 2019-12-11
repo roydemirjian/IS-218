@@ -24,7 +24,6 @@ else if ($action == 'add_question'){
     #questionName
     if(!empty($questionName)){
         if(strlen($questionName)>2){
-            #echo "Question Name is: " . $questionName;
         }else{
             $error =  "Question Name must be more than 3 characters";
             include('../errors/error.php');
@@ -37,7 +36,6 @@ else if ($action == 'add_question'){
     #questionBody
     if(!empty($questionBody)){
         if(strlen($questionBody)<500){
-            #echo "Question Body is: " . $questionBody;
         }else{
             $error = "Question body has reached max characters";
             include('../errors/error.php');
@@ -64,7 +62,7 @@ else if ($action == 'add_question'){
     $sesh_email = $_SESSION['email'];
     $email = $sesh_email;
 
-    if(create_question($email,$questionName,$questionBody,$questionSkills)){
+    if(QuestionDB::create_question($email,$questionName,$questionBody,$questionSkills)){
         header("Location: ../login/home.php");
         #Successful login... goto home page?
     }
@@ -79,7 +77,7 @@ else if ($action == 'add_question'){
 
 else if ($action == 'populate_question'){
     $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    $array = populate_question($question_id);
+    $array = QuestionDB::populate_question($question_id);
     $questionName =  $array[0];
     $questionBody =  $array[1];
     $questionSkills =  $array[2];
@@ -92,10 +90,10 @@ else if ($action == 'edit_question'){
     $questionName = filter_input(INPUT_POST,'questionName');
     $questionBody = filter_input(INPUT_POST,'questionBody');
     $questionSkills = filter_input(INPUT_POST,'questionSkills');
+
     #questionName
     if(!empty($questionName)){
         if(strlen($questionName)>2){
-            #echo "Question Name is: " . $questionName;
         }else{
             $error =  "Question Name must be more than 3 characters";
             include('../errors/error.php');
@@ -108,7 +106,6 @@ else if ($action == 'edit_question'){
     #questionBody
     if(!empty($questionBody)){
         if(strlen($questionBody)<500){
-            #echo "Question Body is: " . $questionBody;
         }else{
             $error = "Question body has reached max characters";
             include('../errors/error.php');
@@ -135,11 +132,7 @@ else if ($action == 'edit_question'){
     $sesh_email = $_SESSION['email'];
     $email = $sesh_email;
 
-    #echo $questionName;
-    #echo $questionBody;
-    #echo $questionSkills;
-
-    if(edit_question($email, $question_id,$questionName,$questionBody,$questionSkills)){
+    if(QuestionDB::edit_question($email, $question_id,$questionName,$questionBody,$questionSkills)){
         header("Location: ../login/home.php");
     }
 }

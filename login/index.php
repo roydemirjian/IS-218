@@ -48,9 +48,8 @@ else if ($action == 'user_login'){
         exit;
     }
 
-    if(login_user($email,$password)){
+    if(AccountDB::login_user($email,$password)){
         header("Location: home.php");
-        #Successful login... goto home page?
     }
     /**
     else{
@@ -67,19 +66,11 @@ else if($action == 'user_logout'){
     header("Location: logout.php");
 }
 
+#Should be moved to question\index.php
 else if ($action =='delete_question'){
     $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    delete_question($question_id);
+    QuestionDB::delete_question($question_id);
     header("Location: home.php");
-}
-
-else if ($action == 'edit_question'){
-    $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    #redirect to questions -> questions view
-    #populate questions form using populate_questions
-    #on submit, edit_question
-    #redirect to home.php
-    echo 'test - login index';
 }
 
 

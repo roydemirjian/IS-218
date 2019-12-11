@@ -75,7 +75,7 @@ else if ($action == 'user_register'){
         exit;
     }
 
-    if(register_user($email,$firstName,$lastName,$birthday,$password)){
+    if(AccountDB::register_user($email,$firstName,$lastName,$birthday,$password)){
         header("Location: ../index.php");
     }else{
         $error = "Email must be unique!";
