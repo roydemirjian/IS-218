@@ -2,7 +2,7 @@
 
 class QuestionDB{
 
-    public static function get_all_questions($sesh_email){
+    public static function get_all_user_questions($sesh_email){
         $db = Database::getDB();
         try {
             $sql = "SELECT * FROM questions WHERE email = '$sesh_email'";
@@ -22,6 +22,28 @@ class QuestionDB{
         }
 
     }
+
+    public static function get_all_questions(){
+        $db = Database::getDB();
+        try {
+            $sql = "SELECT * FROM questions";
+            $q = $db->prepare($sql);
+            $q->execute();
+            $results = $q->fetchAll();
+            if($q->rowCount() > 0){
+                return $results;
+            }else{
+                echo 'There are no posts available';
+            }
+            $q->closeCursor();
+
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+    }
+
+
 
     public static function populate_question($question_id){
         $db = Database::getDB();
@@ -97,6 +119,22 @@ class QuestionDB{
         } catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
+    }
+
+    public static function new_answer(){
+
+    }
+
+    public static function get_answer(){
+
+    }
+
+    public static function up_vote(){
+
+    }
+
+    public static function down_vote(){
+
     }
 
 }
