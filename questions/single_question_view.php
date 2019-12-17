@@ -2,33 +2,65 @@
 
 
 <head>
-    <link rel="stylesheet" href="../styles/main.css?v=1.1.8">
+    <link rel="stylesheet" href="../styles/main.css?v=1.1.1">
+    <link rel="stylesheet" href="../styles/table.css?v=1.1.1">
 </head>
 
 <main class="question">
 
-    <h1 id = "question_number"> Question # <?php echo $question_id; ?> </h1>
+    <h1 id = "question_number"> BY: <?php echo $questionEmail; ?></h1>
+    <h1 id = "question_number"> Question ID: <?php echo $question_id; ?> </h1>
+    <h1 id = "question_number"> Question Name: <?php echo $questionName; ?> </h1>
+    <h1 id = "question_number"> Question Body: <?php echo $questionBody; ?> </h1>
+    <h1 id = "question_number"> Question Skills: <?php echo $questionSkills; ?> </h1>
 
-    <form action="index.php" method="post">
-        <input type="hidden" name="action" value="edit_question">
-        <input type="hidden" name="id" value= "<?php echo $question_id; ?>" >
+</main>
 
-        <label>Question Name</label>
-        <input id="question_name" type="text" name="questionName" value = "<?php echo $questionName; ?>" ><br>
+<main>
+    <table id="questions_table" border="1"><tr><th>User</th><th>Body</th><th>Score</th><th>Vote</th></tr>
+        <?php $results = QuestionDB::get_answers($question_id); ?>
+        <?php foreach ($results as $result) {
+            echo "<form action=\"index.php\" method=\"post\" >" .
+                "<tr><td>" . $result["email"] .
+                "</td><td>" . $result["body"] .
+                "</td><td>" .$result["score"] .
+                "</td><td><input type=\"hidden\" name=\"action\"value=\"upvote\" >" .
+                "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
+                "<input type=\"submit\" value=\"Upvote\" ></td>" .
+                "</tr></form>" .
 
-        <label>Question Body</label>
-        <input id="question_body" type="text" name="questionBody" value = "<?php echo $questionBody; ?>" ><br>
+                "<form action=\"index.php\" method=\"post\" >" .
+                "<tr><td><input type=\"hidden\" name=\"action\"value=\"downvote\" >" .
+                "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
+                "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Downvote\" ></td>" .
+                "</tr></form>";
+        }
 
-        <label>Question Skills</label>
-        <textarea id="question_skills" name="questionSkills" placeholder="separate with commas" style="height:100px" ><?php echo $questionSkills; ?></textarea>
+        ?>
+
+
+    </table>
+</main>
+
+<main class="question">
+    <form id = "answer_form" action="index.php" method="post">
+        <input type="hidden" name="action" value="add_answer">
+
+        <input type="hidden" name="question_id" value="<?php echo $question_id; ?>">
+
+        <label>Answering As:</label>
+        <div> <?php echo $sesh_email; ?> </div> <br>
+
+        <label>Answer Body</label>
+        <input id="answer_body" type="text" name="answerBody"><br>
 
         <label>Submit</label>
-        <input id="question_submit" type="submit" class="button" value="Edit"><br>
+        <input id="answer_submit" type="submit" class="button" value="Submit"><br>
 
     </form>
 
     <form id = "question_back" action="../login/home.php" method="post">
-        <input type="submit" value="Back" />
+        <input id="question_back_button" type="submit" value="Back" />
     </form>
 
 </main>

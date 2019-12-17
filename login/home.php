@@ -74,7 +74,7 @@ foreach ($results as $result) {
          "</tr></form>" .
 
          "<form action=\"index.php\" method=\"post\" >" .
-         "<tr><td><input type=\"hidden\" name=\"action\"value=\"populate_question\" >" .
+         "<tr><td><input type=\"hidden\" name=\"action\"value=\"reply_question\" >" .
          "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
          "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Reply\" ></td>" .
          "</tr></form>";

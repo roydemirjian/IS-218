@@ -58,11 +58,12 @@ class QuestionDB{
                     $questionName = $result["title"];
                     $questionBody = $result["body"];
                     $questionSkills = $result["skills"];
+                    $questionEmail = $result["email"];
                 }
             }else{
                 echo 'Could not obtain question data';
             }
-            return array($questionName,$questionBody,$questionSkills);
+            return array($questionName,$questionBody,$questionSkills,$questionEmail);
             $q->closeCursor();
         } catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
@@ -121,11 +122,42 @@ class QuestionDB{
         }
     }
 
-    public static function new_answer(){
+    public static function new_answer($sesh_email,$answerBody,$question_id){
+        $db = Database::getDB();
+        try {
+            $sql2 = "INSERT INTO answers (email, body, question_id) VALUES ('$sesh_email','$answerBody','$question_id')";
+            $q = $db->prepare($sql2);
+            $q->bindValue('email',$sesh_email);
+            $q->bindValue('body',$answerBody);
+            $q->bindValue('question_id',$question_id);
+            $q->execute();
+            $q->closeCursor();
+            return true;
+            exit;
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
 
     }
 
-    public static function get_answer(){
+    public static function get_answers($question_id){
+        $db = Database::getDB();
+        try {
+            $sql = "SELECT * FROM answers WHERE question_id = '$question_id'";
+            $q = $db->prepare($sql);
+            $q->bindValue('question_id',$question_id);
+            $q->execute();
+            $results = $q->fetchAll();
+            if($q->rowCount() > 0){
+                return $results;
+            }else{
+                echo 'You have not commented yet';
+            }
+            $q->closeCursor();
+
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
 
     }
 

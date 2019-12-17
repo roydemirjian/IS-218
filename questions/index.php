@@ -137,6 +137,38 @@ else if ($action == 'edit_question'){
     }
 }
 
+else if ($action == 'reply_question'){
+    session_start();
+    $sesh_email = $_SESSION['email'];
+    $question_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    $array = QuestionDB::populate_question($question_id);
+    $questionName =  $array[0];
+    $questionBody =  $array[1];
+    $questionSkills =  $array[2];
+    $questionEmail =  $array[3];
+    include('single_question_view.php');
+}
+
+else if ($action == 'add_answer'){
+    session_start();
+    $sesh_email = $_SESSION['email'];
+    $question_id = filter_input(INPUT_POST, 'question_id',FILTER_VALIDATE_INT);
+    $answerBody = filter_input(INPUT_POST,'answerBody');
+
+    #questionBody
+    if(!empty($answerBody)){
+        if(strlen($answerBody)<100){
+        }else{
+            $error = "Answer body has reached max characters";
+            include('../errors/error.php');
+        }
+    }else{
+        $error = "Answer Body must be filled out";
+        include('../errors/error.php');
+    }
+    QuestionDB::new_answer($sesh_email,$answerBody,$question_id);
+    header("Location: ../login/home.php");
+}
 
 
 ?>
