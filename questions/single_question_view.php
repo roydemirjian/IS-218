@@ -8,22 +8,22 @@
 
 <main class="question">
 
-    <h1 id = "question_number"> BY: <?php echo $questionEmail; ?></h1>
-    <h1 id = "question_number"> Question ID: <?php echo $question_id; ?> </h1>
-    <h1 id = "question_number"> Question Name: <?php echo $questionName; ?> </h1>
-    <h1 id = "question_number"> Question Body: <?php echo $questionBody; ?> </h1>
-    <h1 id = "question_number"> Question Skills: <?php echo $questionSkills; ?> </h1>
+    <h1> BY: <?php echo $questionEmail; ?></h1>
+    <h1> Question ID: <?php echo $question_id; ?> </h1>
+    <h1> Question Name: <?php echo $questionName; ?> </h1>
+    <h1> Question Body: <?php echo $questionBody; ?> </h1>
+    <h1> Question Skills: <?php echo $questionSkills; ?> </h1>
 
 </main>
 
 <main>
-    <table id="questions_table" border="1"><tr><th>User</th><th>Body</th><th>Score</th><th>Vote</th></tr>
+    <table id="questions_table" border="1"><caption>Answers</caption><tr><th>User</th><th>Body</th><th>Score</th><th>Vote</th></tr>
         <?php $results = QuestionDB::get_answers($question_id); ?>
         <?php foreach ($results as $result) {
             echo "<form action=\"index.php\" method=\"post\" >" .
                 "<tr><td>" . $result["email"] .
                 "</td><td>" . $result["body"] .
-                "</td><td>" .$result["score"] .
+                "</td><td>" .$result["scores"] .
                 "</td><td><input type=\"hidden\" name=\"action\"value=\"upvote\" >" .
                 "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
                 "<input type=\"submit\" value=\"Upvote\" ></td>" .
@@ -35,7 +35,6 @@
                 "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Downvote\" ></td>" .
                 "</tr></form>";
         }
-
         ?>
 
 

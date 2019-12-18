@@ -170,6 +170,26 @@ else if ($action == 'add_answer'){
     header("Location: ../login/home.php");
 }
 
+else if ($action == 'upvote'){
+    session_start();
+    $answer_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    QuestionDB::up_vote($answer_id);
+    header("Location: ../login/home.php");
+
+    echo "upvote";
+
+}
+
+else if ($action == 'downvote') {
+    session_start();
+    $sesh_email = $_SESSION['email'];
+    $answer_id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+    QuestionDB::down_vote($answer_id);
+    header("Location: ../login/home.php");
+
+    echo "downvote";
+
+}
 
 ?>
 

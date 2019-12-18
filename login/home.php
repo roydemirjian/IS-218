@@ -26,6 +26,9 @@ echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
 ?>
 <link rel="stylesheet" href="../styles/table.css?v=1.2.3">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
+</script>
+
 <main class = "home_buttons">
     <form id="home_question" action="index.php" method="post">
         <input type="hidden" name="action" value="add_question"/>
@@ -37,17 +40,34 @@ echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
         <input type="submit" value="Logout" />
     </form>
 
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
+    <form id="user_questions" action="index.php" method="post">
+        <input type="hidden" name="action" value="user_questions_home"/>
+        <input type="submit" value="User Questions" />
+    </form>
+
+    <form id="user_questions" action="index.php" method="post">
+        <input type="hidden" name="action" value="all_questions_home"/>
+        <input type="submit" value="All Questions" />
+    </form>
+
+
+
 </main>
 
 
 <?php
 
+$toggle= $_SESSION['toggle'];
+
+if ($toggle == "all_questions_home"){
+    $results = QuestionDB::get_all_questions($sesh_email);
+} else {
+    $results = QuestionDB::get_all_user_questions($sesh_email);
+}
+
+
 #Get all questions posted by user
-$results = QuestionDB::get_all_user_questions($sesh_email);
+#$results = QuestionDB::get_all_user_questions($sesh_email);
 
 #Get all questions posted by all users
 #$results = QuestionDB::get_all_questions();

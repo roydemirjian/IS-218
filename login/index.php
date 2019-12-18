@@ -73,6 +73,18 @@ else if ($action =='delete_question'){
     header("Location: home.php");
 }
 
+else if($action == 'user_questions_home'){
+    session_start();
+    $_SESSION['toggle'] = $action;
+    header("Location: home.php");
+}
+
+else if($action == 'all_questions_home'){
+    session_start();
+    $_SESSION['toggle'] = $action;
+    header("Location: home.php");
+}
+
 
 ?>
 
