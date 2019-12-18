@@ -122,6 +122,11 @@ class QuestionDB{
         }
     }
 
+
+}
+
+class AnswerDB{
+
     public static function new_answer($sesh_email,$answerBody,$question_id){
         $db = Database::getDB();
         try {

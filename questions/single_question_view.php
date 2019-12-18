@@ -17,8 +17,8 @@
 </main>
 
 <main>
-    <table id="questions_table" border="1"><caption>Answers</caption><tr><th>User</th><th>Body</th><th>Score</th><th>Vote</th></tr>
-        <?php $results = QuestionDB::get_answers($question_id); ?>
+    <table id="questions_table" border="1"><caption>Answers</caption><tr><th>User</th><th>Body</th><th>Score</th><th>Vote</th><th>Downvote</th></tr>
+        <?php $results = AnswerDB::get_answers($question_id); ?>
         <?php foreach ($results as $result) {
             echo "<form action=\"index.php\" method=\"post\" >" .
                 "<tr><td>" . $result["email"] .
@@ -27,10 +27,10 @@
                 "</td><td><input type=\"hidden\" name=\"action\"value=\"upvote\" >" .
                 "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
                 "<input type=\"submit\" value=\"Upvote\" ></td>" .
-                "</tr></form>" .
+                "</form>" .
 
                 "<form action=\"index.php\" method=\"post\" >" .
-                "<tr><td><input type=\"hidden\" name=\"action\"value=\"downvote\" >" .
+                "<td><input type=\"hidden\" name=\"action\"value=\"downvote\" >" .
                 "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
                 "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Downvote\" ></td>" .
                 "</tr></form>";

@@ -26,8 +26,6 @@ echo '<h1 id="welcome">'. "WELCOME " . $firstName . " " . $lastName . '</h1>';
 ?>
 <link rel="stylesheet" href="../styles/table.css?v=1.2.3">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
-</script>
 
 <main class = "home_buttons">
     <form id="home_question" action="index.php" method="post">
@@ -66,15 +64,10 @@ if ($toggle == "all_questions_home"){
 }
 
 
-#Get all questions posted by user
-#$results = QuestionDB::get_all_user_questions($sesh_email);
-
-#Get all questions posted by all users
-#$results = QuestionDB::get_all_questions();
 
 
 echo "<table id=\"questions_table\" border=\"1\">
-      <tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th><th>Delete</th><th>Edit</th></tr>";
+      <tr><th>ID</th><th>Email</th><th>Title</th><th>Body</th><th>Skills</th><th>Delete</th><th>Edit</th><th>Reply</th></tr>";
 foreach ($results as $result) {
     echo "<form action=\"index.php\" method=\"post\" >" .
          "<tr><td>" . $result["id"] .
@@ -85,16 +78,16 @@ foreach ($results as $result) {
          "</td><td><input type=\"hidden\" name=\"action\"value=\"delete_question\" >" .
          "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
          "<input type=\"submit\" value=\"Delete\" ></td>" .
-         "</tr></form>" .
+         "</form>" .
 
          "<form action=\"index.php\" method=\"post\" >" .
-         "<tr><td><input type=\"hidden\" name=\"action\"value=\"populate_question\" >" .
+         "<td><input type=\"hidden\" name=\"action\"value=\"populate_question\" >" .
          "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
          "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Edit\" ></td>" .
-         "</tr></form>" .
+         "</form>" .
 
          "<form action=\"index.php\" method=\"post\" >" .
-         "<tr><td><input type=\"hidden\" name=\"action\"value=\"reply_question\" >" .
+         "<td><input type=\"hidden\" name=\"action\"value=\"reply_question\" >" .
          "<input type=\"hidden\" name=\"id\" value= {$result['id']} >" .
          "<input type=\"submit\" formaction=\"../questions/index.php\" value=\"Reply\" ></td>" .
          "</tr></form>";
