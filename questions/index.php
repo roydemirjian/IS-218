@@ -134,8 +134,12 @@ else if ($action == 'edit_question'){
 
     if(QuestionDB::edit_question($email, $question_id,$questionName,$questionBody,$questionSkills)){
         header("Location: ../login/home.php");
+    }else{
+        $error = "Cant edit other users posts";
+        include('../errors/error.php');
     }
 }
+
 
 else if ($action == 'reply_question'){
     session_start();

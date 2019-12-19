@@ -9,10 +9,12 @@
 <main class="question">
 
     <h1> BY: <?php echo $questionEmail; ?></h1>
-    <h1> Question ID: <?php echo $question_id; ?> </h1>
-    <h1> Question Name: <?php echo $questionName; ?> </h1>
-    <h1> Question Body: <?php echo $questionBody; ?> </h1>
-    <h1> Question Skills: <?php echo $questionSkills; ?> </h1>
+    <ul style="list-style-type:none;">
+        <li>Question ID: <?php echo $question_id; ?> </li>
+        <li>Question Name: <?php echo $questionName; ?> </li>
+        <li>Question Body: <?php echo $questionBody; ?> </li>
+        <li>Question Skills: <?php echo $questionSkills; ?> </li>
+    </ul>
 
 </main>
 

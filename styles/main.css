@@ -86,6 +86,7 @@ footer > p {
     padding: 70px 15px;
     border: 3px solid #f1f1f1;
     height: 400px;
+    text-align: center;
 }
 
 .register {
